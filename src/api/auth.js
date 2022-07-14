@@ -18,7 +18,7 @@ router.post('/login', async(req, res) => {
       ...user,
       //! Esto está hardcodeado y probablemente necesite venir de otra base de datos o tener una ruta diferente para registrar a los administradores
       role:'admin',
-      //? Aquí podemos definir las rutas a las que tendrá acceso el rol
+      //? Aquí podemos definir las rutas a las que tendrá acceso el rol por ejemplo si cambiamos lo que esta por ['users:me'] tendremos acceso a la ruta
       permissions: ['users:foo']
     }
     //* Si la validación es aprobada entonces debo generar un token
