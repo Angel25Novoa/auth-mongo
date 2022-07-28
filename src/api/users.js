@@ -24,6 +24,7 @@ router.get('/me', async(req, res) => {
   // console.log('***********************')
   res.send({
     username: sessionUser.username,
+    email: sessionUser.email,
   })
 })
 

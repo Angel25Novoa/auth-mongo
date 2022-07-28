@@ -6,6 +6,7 @@ const UserModel = require('../models/users')
 const AuthService = require('../services/auth')
 require('dotenv').config()
 
+
 const userService = new UserService(UserModel)
 const authService = new AuthService(userService)
 const JWT_SECRET = process.env.JWT_SECRET 
@@ -18,8 +19,8 @@ router.post('/login', async(req, res) => {
       ...user,
       //! Esto está hardcodeado y probablemente necesite venir de otra base de datos o tener una ruta diferente para registrar a los administradores
       role:'admin',
-      //? Aquí podemos definir las rutas a las que tendrá acceso el rol por ejemplo si cambiamos lo que esta por ['users:me'] tendremos acceso a la ruta
-      permissions: ['users:foo']
+      //? Aquí podemos definir las rutas a las que tendrá acceso el rol por ejemplo si cambiamos lo que esta por ['users:me'] tendremos acceso a la ruta en cambio si usamos cualquier optro string restringiremos el paso a dichas rutas
+      permissions: ['users:me']
     }
     //* Si la validación es aprobada entonces debo generar un token
     //* Con esto el usuario ya no tiene que mandar constantemente el correo y la contraseña
