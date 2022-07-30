@@ -4,7 +4,9 @@ const usersRouter = require('./users')
 const registerRouter = require('./register')
 const authRouter = require('./auth')
 const authMiddleware = require('../middlewares/authorization')
+const cors = require('cors')
 
+router.use(cors())
 router.use('/auth', authRouter)
 router.use('/register', registerRouter)
 
