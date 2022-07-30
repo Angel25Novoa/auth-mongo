@@ -9,7 +9,6 @@ require('dotenv').config()
 
 const userService = new UserService(UserModel)
 const authService = new AuthService(userService)
-const JWT_SECRET = process.env.JWT_SECRET 
 
 router.post('/login', async(req, res) => {
   const { email, password } = req.body
@@ -28,7 +27,7 @@ router.post('/login', async(req, res) => {
       data: userRole,
       //? Esto significa que el token expirará en una hora
       exp: Math.floor(Date.now()/1000)+(60*60)
-    }, JWT_SECRET)
+    }, process.env.JWT_SECRET)
     res.send({
       _id: user._id,
       token
